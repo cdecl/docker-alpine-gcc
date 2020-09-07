@@ -12,6 +12,6 @@ $ docker run --rm -v $(pwd):/app ghcr.io/cdecl/alpine-gcc sh -c  'cd /app && g++
 
 - build (w/ cmake)
 ```
-# only static, ABI Crash
+# only static
 $ docker run --rm -v $(pwd):/app ghcr.io/cdecl/alpine-gcc sh -c  'mkdir -p /app/build && cd /app/build && cmake .. && make'
 ```
