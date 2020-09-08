@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: bash ./build.sh 
+        
+    - name: Push Docker image
+      run: |
+        cat "${{ secrets.SECRET_KEY }}" | docker login --username cdecl --password-stdin
+        docker push ghcr.io/cdecl/alpine-gcc:latest
+        
